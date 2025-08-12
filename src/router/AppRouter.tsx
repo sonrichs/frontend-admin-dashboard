@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import ProtectedRoute from '../components/Common/ProtectedRoute';
 import UsersPage from '../pages/Dashboard/UsersPage';
 import ProjectsPage from '../pages/Dashboard/ProjectsPage';
+import InvestmentsPage from '../pages/Dashboard/InvestmentsPage';
 
 export default function AppRouter() {
   return (
@@ -37,6 +38,16 @@ export default function AppRouter() {
             <ProtectedRoute>
               <Layout>
                 <ProjectsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/investments"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <InvestmentsPage />
               </Layout>
             </ProtectedRoute>
           }

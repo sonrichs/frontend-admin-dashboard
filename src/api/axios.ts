@@ -11,11 +11,11 @@ const AxiosInstance = axios.create({
 
 AxiosInstance.interceptors.request.use(
   (config) => {
-    // Example: Attach auth token if available
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   config.headers['Authorization'] = `Bearer ${token}`;
-    // }
+    // Attach auth token if available
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => Promise.reject(error)
@@ -24,10 +24,11 @@ AxiosInstance.interceptors.request.use(
 AxiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Example: Handle global errors
-    // if (error.response?.status === 401) {
-    //   // Redirect to login or show message
-    // }
+    // Handle global errors
+    console.log(error.response.status);
+    if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+    }
     return Promise.reject(error);
   }
 );
