@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { setToken } from '../../utils/token';
 import { login } from '../../api/resources/login';
 import type { FormEvent } from 'react';
-import type { JwtResponse } from '../../api/models/jwtResponse';
+import type { JwtResponse } from '../../api/models/JwtResponse';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
