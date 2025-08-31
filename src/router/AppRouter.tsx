@@ -3,7 +3,7 @@ import LoginPage from '../pages/Auth/LoginPage';
 import DashboardPage from '../pages/Dashboard/DashboardPage';
 import Layout from '../components/Layout/Layout';
 import ProtectedRoute from '../components/Common/ProtectedRoute';
-import UsersPage from '../pages/Dashboard/UsersPage';
+import UsersPage from '../pages/Dashboard/Users/UsersPage';
 import ProjectsPage from '../pages/Dashboard/ProjectsPage';
 import InvestmentsPage from '../pages/Dashboard/InvestmentsPage';
 
@@ -11,7 +11,10 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={<LoginPage />}
+        />
         <Route
           path="/"
           element={

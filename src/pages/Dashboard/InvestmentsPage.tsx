@@ -14,31 +14,35 @@ export default function InvestmentsPage() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Investments List</h1>
+    <div className="mx-auto max-w-4xl p-6">
+      <h1 className="mb-6 text-center text-3xl font-bold">Investments List</h1>
+      <div className="mb-4 flex justify-end"></div>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow rounded-lg">
+        <table className="min-w-full rounded-lg bg-white shadow">
           <thead className="bg-gray-100">
             <tr>
-              <th className="py-2 px-4 text-left">Project</th>
-              <th className="py-2 px-4 text-left">Stocks</th>
-              <th className="py-2 px-4 text-left">Invested At</th>
-              <th className="py-2 px-4 text-left">Exited At</th>
-              <th className="py-2 px-4 text-left">User</th>
+              <th className="px-4 py-2 text-left">Project</th>
+              <th className="px-4 py-2 text-left">Stocks</th>
+              <th className="px-4 py-2 text-left">Invested At</th>
+              <th className="px-4 py-2 text-left">Exited At</th>
+              <th className="px-4 py-2 text-left">User</th>
             </tr>
           </thead>
           <tbody>
             {investments.map((investment) => (
-              <tr key={investment.id} className="border-b hover:bg-gray-50">
-                <td className="py-2 px-4">{investment.project.title}</td>
-                <td className="py-2 px-4">{investment.stocksAmount}</td>
-                <td className="py-2 px-4">
+              <tr
+                key={investment.id}
+                className="border-b hover:bg-gray-50"
+              >
+                <td className="px-4 py-2">{investment.project.title}</td>
+                <td className="px-4 py-2">{investment.stocksAmount}</td>
+                <td className="px-4 py-2">
                   {new Date(investment.investedAt).toLocaleDateString()}
                 </td>
-                <td className="py-2 px-4">
+                <td className="px-4 py-2">
                   {new Date(investment.exitedAt).toLocaleDateString()}
                 </td>
-                <td className="py-2 px-4">{investment.user.email}</td>
+                <td className="px-4 py-2">{investment.user.email}</td>
               </tr>
             ))}
           </tbody>
