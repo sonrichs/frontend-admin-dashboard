@@ -4,10 +4,22 @@ export interface Project {
   description: string;
   totalStocks: number;
   stockPrice: number;
-  currency: number;
-  startDate: Date;
-  endDate: Date;
+  phase: number;
+  currency: string;
+  startDate: string;
+  endDate: string;
   status?: 'active' | 'completed' | 'archived';
   createdAt?: string;
   updatedAt?: string;
+}
+
+export interface CreateProject {
+  title: string;
+  description: string;
+  totalStocks: number;
+  stockPrice: number;
+  phase: number;
+  currency: string;
+  startDate: string;
+  endDate: string;
 }

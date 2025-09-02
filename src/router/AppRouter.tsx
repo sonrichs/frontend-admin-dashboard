@@ -4,7 +4,7 @@ import DashboardPage from '../pages/Dashboard/DashboardPage';
 import Layout from '../components/Layout/Layout';
 import ProtectedRoute from '../components/Common/ProtectedRoute';
 import UsersPage from '../pages/Dashboard/Users/UsersPage';
-import ProjectsPage from '../pages/Dashboard/ProjectsPage';
+import ProjectsPage from '../pages/Dashboard/Projects/ProjectsPage';
 import InvestmentsPage from '../pages/Dashboard/InvestmentsPage';
 
 export default function AppRouter() {

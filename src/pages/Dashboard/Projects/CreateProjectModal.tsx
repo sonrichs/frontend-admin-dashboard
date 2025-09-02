@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Modal from '../../../components/Common/Modal';
-import { UserCreationForm } from './UserCreationForm';
+import { ProjectCreationForm } from './ProjectCreationForm';
 import ProtectedRoute from '../../../components/Common/ProtectedRoute';
 
-export default function CreateUserModal() {
+export default function CreateProjectModal() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -25,7 +25,7 @@ export default function CreateUserModal() {
         <div className="max-w-full text-center">
           <div className="mx-auto my-4 w-full">
             <h3 className="text-lg font-black text-gray-800">Create</h3>
-            <UserCreationForm closeModal={closeModal} />
+            <ProjectCreationForm closeModal={closeModal} />
           </div>
         </div>
       </Modal>
