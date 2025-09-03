@@ -22,8 +22,8 @@ export const getProjectById = async (id: string) => {
 export const createProject = async (projectData: Omit<Project, 'id'>) => {
   return AxiosInstance.post('/projects', projectData)
     .then((response) => response.data)
-    .catch((error) => {
-      console.error('Error creating project:', error);
+    .catch(() => {
+      console.error('Error creating project');
       return null;
     });
 };

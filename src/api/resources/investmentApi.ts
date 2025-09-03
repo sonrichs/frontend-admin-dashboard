@@ -1,5 +1,5 @@
 import AxiosInstance from '../axios';
-import type { Investment } from '../models/Investment';
+import type { CreateInvestment, Investment } from '../models/Investment';
 
 export const getInvestments = async () => {
   return AxiosInstance.get('/investments')
@@ -19,9 +19,7 @@ export const getInvestmentById = async (id: string) => {
     });
 };
 
-export const createInvestment = async (
-  investmentData: Omit<Investment, 'id'>
-) => {
+export const createInvestment = async (investmentData: CreateInvestment) => {
   return AxiosInstance.post('/investments', investmentData)
     .then((response) => response.data)
     .catch((error) => {

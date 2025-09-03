@@ -5,7 +5,7 @@ import Layout from '../components/Layout/Layout';
 import ProtectedRoute from '../components/Common/ProtectedRoute';
 import UsersPage from '../pages/Dashboard/Users/UsersPage';
 import ProjectsPage from '../pages/Dashboard/Projects/ProjectsPage';
-import InvestmentsPage from '../pages/Dashboard/InvestmentsPage';
+import InvestmentsPage from '../pages/Dashboard/Investments/InvestmentsPage';
 
 export default function AppRouter() {
   return (

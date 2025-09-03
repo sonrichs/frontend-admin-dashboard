@@ -17,7 +17,7 @@ export const ProjectCreationForm = ({
     description: '',
     totalStocks: 0,
     stockPrice: 0,
-    phase: 0,
+    phase: 1,
     currency: '',
     startDate: '1900-01-01',
     endDate: '1900-01-01',

@@ -10,3 +10,9 @@ export interface Investment {
   project: Project;
   user: User;
 }
+
+export interface CreateInvestment {
+  stocksAmount: number;
+  projectId: string;
+  userId: string;
+}

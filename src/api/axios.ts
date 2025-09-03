@@ -25,7 +25,6 @@ AxiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     // Handle global errors
-    console.log(error.response.status);
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
     }
