@@ -32,12 +32,6 @@ export default function UsersPage() {
     setOpenMenuId(null);
   };
 
-  const handleDelete = (user: User) => {
-    // TODO: wire to delete confirmation/action
-    console.log('Delete user', user);
-    setOpenMenuId(null);
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       const fetchedUsers = await getUsers();
@@ -170,19 +164,6 @@ export default function UsersPage() {
                             className="h-4 w-4"
                           />
                           Edit
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDelete(user)}
-                          className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50"
-                          role="menuitem"
-                        >
-                          <img
-                            src="/trashcan-icon.svg"
-                            alt="Delete"
-                            className="h-4 w-4 text-red-600"
-                          />
-                          Delete
                         </button>
                       </div>
                     </div>
