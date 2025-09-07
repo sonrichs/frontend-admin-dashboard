@@ -10,6 +10,7 @@ export const createProjectSchema = yup.object().shape({
   startDate: yup
     .date()
     .required('Please enter start date')
+    .min(new Date(), 'Start date cannot be in the past')
     .test(
       'is-valid',
       'Start date must be before end date',

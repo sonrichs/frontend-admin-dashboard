@@ -11,13 +11,17 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-white shadow p-4 flex justify-between">
+    <header className="flex justify-between bg-white p-4 shadow">
       <span>Admin Dashboard</span>
       <button
-        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 hover:cursor-pointer"
+        className="rounded hover:cursor-pointer hover:bg-emerald-50"
         onClick={handleLogout}
       >
-        Logout
+        <img
+          src="/logout-icon.svg"
+          alt="Logout"
+          className="mr-1 inline-block size-5"
+        />
       </button>
     </header>
   );
