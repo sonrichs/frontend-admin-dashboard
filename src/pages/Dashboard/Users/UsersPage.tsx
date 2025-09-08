@@ -87,6 +87,8 @@ export default function UsersPage() {
             <tr>
               <th className="px-4 py-2 text-left">Name</th>
               <th className="px-4 py-2 text-left">Email</th>
+              <th className="px-4 py-2 text-left">Rut</th>
+              <th className="px-4 py-2 text-left">Tipo</th>
               <th className="px-4 py-2 text-left">Status</th>
               <th className="px-4 py-2 text-left">Role</th>
               <th className="px-4 py-2 text-left">Actions</th>
@@ -100,6 +102,11 @@ export default function UsersPage() {
               >
                 <td className="px-4 py-2">{user.name}</td>
                 <td className="px-4 py-2">{user.email}</td>
+                <td className="px-4 py-2">{user.nationalId}</td>
+                <td className="px-4 py-2">
+                  {user.type?.charAt(0)?.toUpperCase() + user.type?.slice(1) ||
+                    ''}
+                </td>
                 <td className="px-4 py-2">
                   <span
                     className={`rounded px-2 py-1 text-xs font-semibold ${

@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from 'react';
-import type { CreateUser } from '../../../api/models/User';
+import { USER_TYPES, type CreateUser } from '../../../api/models/User';
 import { createUser } from '../../../api/resources/userApi';
 import { createUserSchema } from './Schema/createUserSchema';
 import * as yup from 'yup';
@@ -13,6 +13,8 @@ export const UserCreationForm = ({ closeModal }: UserCreationFormProps) => {
   const [formData, setFormData] = useState<CreateUser>({
     email: '',
     name: '',
+    nationalId: '',
+    type: 'natural',
     password: 'notactive',
     isActive: false,
     isAdmin: false,
@@ -21,21 +23,35 @@ export const UserCreationForm = ({ closeModal }: UserCreationFormProps) => {
   const [formErrors, setFormErrors] = useState({
     emailError: '',
     nameError: '',
+    nationalIdError: '',
+    typeError: '',
   });
 
   const resetAndCloseModal = () => {
     closeModal();
-    setFormErrors({ emailError: '', nameError: '' });
+    setFormErrors({
+      emailError: '',
+      nameError: '',
+      nationalIdError: '',
+      typeError: '',
+    });
   };
 
-  const handleOnChange = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = async (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleCreateUser = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     try {
-      setFormErrors({ emailError: '', nameError: '' });
+      setFormErrors({
+        emailError: '',
+        nameError: '',
+        nationalIdError: '',
+        typeError: '',
+      });
       await createUserSchema.validate(formData, { abortEarly: false });
       const response = await createUser(formData);
       if (!response) {
@@ -46,10 +62,18 @@ export const UserCreationForm = ({ closeModal }: UserCreationFormProps) => {
       closeModal();
     } catch (error) {
       if (error instanceof yup.ValidationError) {
-        const errors = { emailError: '', nameError: '' };
+        const errors = {
+          emailError: '',
+          nameError: '',
+          nationalIdError: '',
+          typeError: '',
+        };
         error.inner.forEach((error) => {
           if (error.path === 'email') errors.emailError = error.message;
           if (error.path === 'name') errors.nameError = error.message;
+          if (error.path === 'nationalId')
+            errors.nationalIdError = error.message;
+          if (error.path === 'type') errors.typeError = error.message;
         });
         setFormErrors(errors);
       } else {
@@ -101,6 +125,54 @@ export const UserCreationForm = ({ closeModal }: UserCreationFormProps) => {
           />
           {formErrors.nameError && (
             <p className="mt-1 text-sm text-red-600">{formErrors.nameError}</p>
+          )}
+        </div>
+        <div className="text-left">
+          <label
+            className="font-medium text-gray-600"
+            htmlFor="nationalId"
+          >
+            RUT
+          </label>
+          <input
+            type="text"
+            name="nationalId"
+            value={formData.nationalId}
+            placeholder="11111111-1"
+            onChange={handleOnChange}
+            className="w-full rounded-xl border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+          />
+          {formErrors.nationalIdError && (
+            <p className="mt-1 text-sm text-red-600">
+              {formErrors.nationalIdError}
+            </p>
+          )}
+        </div>
+        <div className="text-left">
+          <label
+            className="font-medium text-gray-600"
+            htmlFor="type"
+          >
+            Tipo Persona
+          </label>
+          <select
+            name="type"
+            value={formData.type}
+            className="w-full rounded-xl border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+            onChange={handleOnChange}
+          >
+            {USER_TYPES.map((userType) => (
+              <option
+                key={userType}
+                value={userType}
+              >
+                {userType.charAt(0).toUpperCase() + userType.slice(1)}
+              </option>
+            ))}
+          </select>
+
+          {formErrors.typeError && (
+            <p className="mt-1 text-sm text-red-600">{formErrors.typeError}</p>
           )}
         </div>
         <div className="flex items-center justify-between gap-3 pt-2">
